@@ -15,9 +15,9 @@ func Test_climbStairs(t *testing.T) {
 		{
 			name: "test",
 			args: args{
-				n: 6,
+				n: 8,
 			},
-			want: 13,
+			want: 34,
 		},
 	}
 	for _, tt := range tests {

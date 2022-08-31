@@ -12,6 +12,13 @@ func Test_lemonadeChange(t *testing.T) {
 		want bool
 	}{
 		// TODO: Add test cases.
+		{
+			name: "test",
+			args: args{
+				bills: []int{5, 5, 5, 10, 5, 20, 5, 10, 5, 20},
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

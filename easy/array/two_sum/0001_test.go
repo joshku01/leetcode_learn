@@ -1,51 +1,35 @@
 package two_sum
 
 import (
-	"fmt"
-	"github.com/stretchr/testify/assert"
+	"reflect"
 	"testing"
 )
 
-type para struct {
-	one []int
-	two int
-}
-
-type ans struct {
-	one []int
-}
-
-type question struct {
-	p para
-	a ans
-}
-
 func Test_twoSum(t *testing.T) {
-	ast := assert.New(t)
-
-	qs := []question{
-		question{
-			p: para{
-				one: []int{3, 2, 4},
-				two: 6,
+	type args struct {
+		nums   []int
+		target int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []int
+	}{
+		// TODO: Add test cases.
+		{
+			name: "test",
+			args: args{
+				nums:   []int{2, 7, 11, 15},
+				target: 9,
 			},
-			a: ans{
-				one: []int{1, 2},
-			},
-		},
-		question{
-			p: para{
-				one: []int{3, 2, 4},
-				two: 8,
-			},
-			a: ans{
-				one: nil,
-			},
+			want: []int{0, 1},
 		},
 	}
-	for _, q := range qs {
-		a, p := q.a, q.p
-		fmt.Println(p, twoSum(p.one, p.two))
-		ast.Equal(a.one, twoSum(p.one, p.two), "输入:%v", p)
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := twoSum(tt.args.nums, tt.args.target); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("twoSum() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }

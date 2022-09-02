@@ -15,7 +15,7 @@ func Test_isValid(t *testing.T) {
 		{
 			name: "test",
 			args: args{
-				s: "[]((",
+				s: "(([]){})",
 			},
 			want: true,
 		},

@@ -1,58 +1,33 @@
 package valid_parentheses
 
-import (
-	"strings"
-)
-
-var r = []string{"(", ")", "{", "}", "[", "]"}
-
-var r1 = map[string]string{
-	"(": ")",
-	"{": "}",
-	"[": "]",
+var r1 = map[rune]rune{
+	'(': ')',
+	'{': '}',
+	'[': ']',
 }
-
-func inArray(val string, array []string) (exists bool) {
-	for _, v := range array {
-		if val == v {
-			return true
-		}
-	}
-	return false
-}
-
-var tag []string
 
 // input "[](){}"
 //        012345
 // output true
+// step 1 總共有三種符號,每一種至少都有頭跟尾
 func isValid(s string) bool {
-	str := strings.Split(s, "")
-	strlen := len(str)
-	// check string is validate
-	for _, v := range str {
-		is := inArray(v, r)
-		if !is {
-			return false
-		}
-	}
-	isPA := strlen % 2
-	if isPA != 0 {
-		return false
-	}
-	for i := 0; i < strlen; i += 2 {
-		for k := range r1 {
-			if str[i] == k {
-				// if not true then tag
-				if str[i+1] != r1[k] {
-					tag = append(tag, str[i])
-				}
+	stack := []byte{}
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '[', '{', '(':
+			stack = append(stack, s[i])
+		case ']', '}', ')':
+			if len(stack) == 0 {
+				return false
+			}
+			ch := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			// 兩邊需要對稱,如果只有一邊有的話return false
+			if (s[i] == ']' && ch != '[') || (s[i] == '}' && ch != '{') || (s[i] == ')' && ch != '(') {
+				return false
 			}
 		}
 	}
-	if len(tag) > 0 {
-		return false
-	}
-	return true
+	return len(stack) == 0
 
 }

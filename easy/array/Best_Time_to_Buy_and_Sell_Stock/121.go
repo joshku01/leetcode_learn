@@ -19,6 +19,7 @@ func maxProfit(prices []int) int {
 	//		}
 	//	}
 	//}
+
 	min := 999999
 	max := 0
 	for i := 0; i < len(prices); i++ {

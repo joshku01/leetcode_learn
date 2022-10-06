@@ -1,6 +1,8 @@
 package Array_Partition
 
-import "sort"
+import (
+	"sort"
+)
 
 //Input: nums = [1,4,3,2]
 //Output: 4

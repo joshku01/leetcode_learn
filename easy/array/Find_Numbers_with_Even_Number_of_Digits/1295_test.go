@@ -1,8 +1,8 @@
-package Majority_Element
+package Find_Numbers_with_Even_Number_of_Digits
 
 import "testing"
 
-func Test_majorityElement(t *testing.T) {
+func Test_findNumbers(t *testing.T) {
 	type args struct {
 		nums []int
 	}
@@ -15,15 +15,15 @@ func Test_majorityElement(t *testing.T) {
 		{
 			name: "test",
 			args: args{
-				nums: []int{2, 2, 1, 1, 1, 2, 2, 4, 4},
+				nums: []int{12, 345, 2, 6, 7896},
 			},
 			want: 2,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := majorityElement(tt.args.nums); got != tt.want {
-				t.Errorf("majorityElement() = %v, want %v", got, tt.want)
+			if got := findNumbers(tt.args.nums); got != tt.want {
+				t.Errorf("findNumbers() = %v, want %v", got, tt.want)
 			}
 		})
 	}

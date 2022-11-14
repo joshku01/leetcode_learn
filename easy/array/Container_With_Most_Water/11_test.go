@@ -1,10 +1,10 @@
-package Majority_Element
+package Container_With_Most_Water
 
 import "testing"
 
-func Test_majorityElement(t *testing.T) {
+func Test_maxArea(t *testing.T) {
 	type args struct {
-		nums []int
+		height []int
 	}
 	tests := []struct {
 		name string
@@ -15,15 +15,15 @@ func Test_majorityElement(t *testing.T) {
 		{
 			name: "test",
 			args: args{
-				nums: []int{2, 2, 1, 1, 1, 2, 2, 4, 4},
+				height: []int{1, 8, 6, 2, 5, 4, 8, 3, 7},
 			},
-			want: 2,
+			want: 49,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := majorityElement(tt.args.nums); got != tt.want {
-				t.Errorf("majorityElement() = %v, want %v", got, tt.want)
+			if got := maxArea(tt.args.height); got != tt.want {
+				t.Errorf("maxArea() = %v, want %v", got, tt.want)
 			}
 		})
 	}

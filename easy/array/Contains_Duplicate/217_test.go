@@ -1,29 +1,29 @@
-package Majority_Element
+package Contains_Duplicate
 
 import "testing"
 
-func Test_majorityElement(t *testing.T) {
+func Test_containsDuplicate(t *testing.T) {
 	type args struct {
 		nums []int
 	}
 	tests := []struct {
 		name string
 		args args
-		want int
+		want bool
 	}{
 		// TODO: Add test cases.
 		{
 			name: "test",
 			args: args{
-				nums: []int{2, 2, 1, 1, 1, 2, 2, 4, 4},
+				nums: []int{1, 2, 3, 1},
 			},
-			want: 2,
+			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := majorityElement(tt.args.nums); got != tt.want {
-				t.Errorf("majorityElement() = %v, want %v", got, tt.want)
+			if got := containsDuplicate(tt.args.nums); got != tt.want {
+				t.Errorf("containsDuplicate() = %v, want %v", got, tt.want)
 			}
 		})
 	}
